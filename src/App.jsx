@@ -4,15 +4,14 @@ import Images from './Images';
 import './App.css'
 
 function App() {
-  const [cards, setCards] = useState([...Images ].sort(() => Math.random() - 0.5));
+  const [cards, setCards] = useState([...Images, ...Images ].sort(() => Math.random() - 0.5));
   const [clicks,setClicks] = useState(0);
   const [won,setWon] = useState(false);
   const [activeCards,setActiveCards] = useState([]);
   const [foundPairs,setFoundPairs] = useState([]);
 
-
   function restart() {
-    setCards([...Images ].sort(() => Math.random() - 0.5));
+    setCards([...Images, ...Images ].sort(() => Math.random() - 0.5));
     setClicks(0);
     setWon(false);
     setActiveCards([]);
@@ -31,7 +30,7 @@ function App() {
       const firstId = activeCards[0].id;
       const secondId = id;
 
-      if (cards[firstId] === cards[secondId]) {
+      if (firstId === secondId) {
         if (foundPairs.length + 2 === cards.length) {
           setWon(true);
         }
@@ -47,7 +46,8 @@ function App() {
 
   return (
     <div>
-      <div className="board">
+      <h1 className="title">Jogo da Memória dos PJ Masks</h1>
+        <div className="board">
         {cards.map((card,index) => {
 
 
@@ -77,16 +77,17 @@ function App() {
         })}
       </div>
       <div className="stats">
+      Cliques: {clicks} &nbsp;&nbsp;&nbsp; Encontrados: {foundPairs.length/2}<br /><br />
         {won && (
           <>
           Você ganhou! Parabéns!<br />
-          Clique no botão para jogar de novo.<br />
-          <input type="button" value="Reiniciar" onClick={restart}/>
+          Clique no botão para jogar de novo.<br /><br />
+          
+          <input type="button" value="Reiniciar" className="btn" onClick={restart}/>
           <br />
           
           </>
         )}
-        Cliques: {clicks} &nbsp;&nbsp;&nbsp; Encontrados:{foundPairs.length/2}
       </div>
     </div>
   );

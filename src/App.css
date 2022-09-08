@@ -1,8 +1,9 @@
 body{
-  background-color: #123;
-  padding: 20px;
+  background-image: url("./assets/cards/bg.png");
+  background-size: cover;
 }
 .board{
+  padding: 1rem;
   width: calc(100vh - 240px);
   max-width: calc(100vw - 40px);
   display:grid;
@@ -10,6 +11,7 @@ body{
   margin: auto;
   grid-template-columns: repeat(6, 1fr);
 }
+
 .card-outer{
   perspective:1000px;
   height: calc((100vh - 290px) / 6);
@@ -35,19 +37,53 @@ body{
   max-width: 100%;
 }
 .card .back{
-  background-color: #468;
+  background-color: #171B52;
   transform:rotateY(180deg);
 }
 .card-outer.flipped .card{
   transform:rotateY(0);
 }
 
+@media (max-width: 425px) {
+  .board {
+    grid-template-columns: repeat(5, 1fr);
+  } 
+  .card-outer{
+    height: calc((100vh - 290px) / 5);
+    max-height: calc((100vw - 90px) / 5);
+  }
+}
 
 .stats{
-  width: 400px;
-  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
   text-align: center;
-  color: #fff;
+  color: #171B52;
   padding: 20px 0;
-  font-size: 2rem;
+  font-size: 1.3rem;
+}
+
+.btn {
+  background-color: #2e57a4;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 6px 16px;
+}
+
+
+.btn:hover {
+  background-color: rgb(184, 47, 47);
+}
+
+.title{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  text-align: center;
+  color: #171B52;
+  padding: 20px 0;
+  font-size: 1.3rem;
 }
