@@ -1,17 +1,21 @@
 import { useState } from 'react';
-import Images from './Images';
+import PawPatrol from './PawPatrol';
+import PJMasks from './PJMasks';
 
 import './App.css'
 
 function App() {
-  const [cards, setCards] = useState([...Images, ...Images ].sort(() => Math.random() - 0.5));
+  const [images, setImages] = useState([...PawPatrol]);
+  const [cards, setCards] = useState([...images, ...images ].sort(() => Math.random() - 0.5));
   const [clicks,setClicks] = useState(0);
   const [won,setWon] = useState(false);
   const [activeCards,setActiveCards] = useState([]);
   const [foundPairs,setFoundPairs] = useState([]);
 
-  function restart() {
-    setCards([...Images, ...Images ].sort(() => Math.random() - 0.5));
+  function restart(e) {
+
+    setImages([...e])
+    setCards([...e, ...e ].sort(() => Math.random() - 0.5));
     setClicks(0);
     setWon(false);
     setActiveCards([]);
@@ -45,8 +49,8 @@ function App() {
   }
 
   return (
-    <div>
-      <h1 className="title">Jogo da Memória dos PJ Masks</h1>
+    <div className={"body"}>
+      <h1 className="title">Jogo da Memória</h1>
         <div className="board">
         {cards.map((card,index) => {
 
@@ -77,13 +81,16 @@ function App() {
         })}
       </div>
       <div className="stats">
-      Cliques: {clicks} &nbsp;&nbsp;&nbsp; Encontrados: {foundPairs.length/2}<br /><br />
+      <br />Cliques: {clicks} &nbsp;&nbsp;&nbsp; Encontrados: {foundPairs.length/2}<br /><br />
+      <input type="button" value="Jogar com PJ Masks" className="btn" onClick={(e) => restart(PJMasks)}/>
+      <input type="button" value="Jogar com Patrulha Canina" className="btn" onClick={(e) => restart(PawPatrol)}/>
         {won && (
           <>
-          Você ganhou! Parabéns!<br />
+          <br />Você ganhou! Parabéns!<br />
           Clique no botão para jogar de novo.<br /><br />
           
-          <input type="button" value="Reiniciar" className="btn" onClick={restart}/>
+          {/* <input type="button" value="Reiniciar" className="btn" onClick={restart}/> */}
+
           <br />
           
           </>

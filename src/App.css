@@ -1,5 +1,5 @@
 body{
-  background-image: url("./assets/cards/bg.png");
+  background-image: url("./assets/cards/bg.jpg");
   background-size: cover;
 }
 .board{
@@ -72,6 +72,7 @@ body{
   font-size: 1.2rem;
   font-weight: 600;
   padding: 6px 16px;
+  margin: 5px;
 }
 
 

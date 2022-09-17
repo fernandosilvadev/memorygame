@@ -31,4 +31,5 @@ const Images = [
     {id: 14, img: img14},
     {id: 15, img: img15},
     ]
+
 export default Images;
