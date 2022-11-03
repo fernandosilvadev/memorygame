@@ -20,6 +20,8 @@ function App() {
     setWon(false);
     setActiveCards([]);
     setFoundPairs([]);
+
+
   }
 
   function handleClick(index, id) {
@@ -48,9 +50,11 @@ function App() {
     setClicks(clicks + 1);
   }
 
+
+
   return (
-    <div className={"body"}>
-      <h1 className="title">Jogo da Memória</h1>
+    <div className={cards.length === 18 ? 'bg-pp' : 'bg-pj'}>
+      <h1 className="title">{"Jogo da Memória " + (cards.length === 18 ? 'Patrulha Canina' : 'PJ Masks')}</h1>
         <div className="board">
         {cards.map((card,index) => {
 
@@ -89,8 +93,6 @@ function App() {
           <br />Você ganhou! Parabéns!<br />
           Clique no botão para jogar de novo.<br /><br />
           
-          {/* <input type="button" value="Reiniciar" className="btn" onClick={restart}/> */}
-
           <br />
           
           </>

@@ -1,11 +1,17 @@
-body{
+.bg-pj{
   background-image: url("./assets/cards/bg.jpg");
   background-size: cover;
+  min-height: 100vh;
 }
+
+.bg-pp{
+  background-image: url("./assets/cards/pp-bg.jpg");
+  background-size: cover;
+  min-height: 100vh;
+}
+
 .board{
   padding: 1rem;
-  width: calc(100vh - 240px);
-  max-width: calc(100vw - 40px);
   display:grid;
   grid-gap:10px;
   margin: auto;
@@ -14,8 +20,8 @@ body{
 
 .card-outer{
   perspective:1000px;
-  height: calc((100vh - 290px) / 6);
-  max-height: calc((100vw - 90px) / 6);
+  height: calc(100vh / 6);
+  max-height: calc(100vw / 6);
 }
 .card{
   border-radius: 5px;
@@ -31,10 +37,14 @@ body{
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .card .front img{
   display: block;
-  max-width: 100%;
+  height: calc(100vh / 6);
+  max-height: calc(100vw / 6);
 }
 .card .back{
   background-color: #171B52;
@@ -44,13 +54,24 @@ body{
   transform:rotateY(0);
 }
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
   .board {
+    padding: 1rem;
+    display:grid;
+    grid-gap:10px;
+    margin: auto;
     grid-template-columns: repeat(5, 1fr);
   } 
   .card-outer{
-    height: calc((100vh - 290px) / 5);
-    max-height: calc((100vw - 90px) / 5);
+    height: calc(100vh / 5);
+    max-height: calc(100vw / 5);
+  }
+
+  .card .front img{
+    display: block;
+    height: calc(100vh / 5);
+    max-height: calc(100vw / 5);
+    max-width: calc(100vw / 5);
   }
 }
 
